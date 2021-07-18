@@ -1,12 +1,9 @@
 package br.com.southsystem.votacaoassembleia.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
 
@@ -24,17 +21,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@Table(name="Voto")
+@IdClass(VotoPK.class)
 public class Voto {
 	
 	@Id
 	private String cpf;
 	
-	@ManyToMany
-	@JoinTable(
-			  name = "sessao_associado", 
-			  joinColumns = @JoinColumn(name = "cpf"), 
-			  inverseJoinColumns = @JoinColumn(name = "id_sessao"))
-	private List<SessaoVotacao> sessaoVotacao;
+	@Id
+	private Integer idSessao;
 	
 	@NotNull
 	private String descVoto;

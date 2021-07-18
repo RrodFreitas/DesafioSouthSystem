@@ -32,12 +32,12 @@ public class SessaoVotacaoController {
 	private SessaoVotacaoService sessaoVotacaoService;
 	
 	@ApiOperation(value = "Abrir sessão de votação.")
-	@PostMapping (value = "/abrir_sessao", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping (value = "/cadastrar", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public boolean abrirSessaoVotacao(
-			@ApiParam(required = true, value = "Abertura da sessão de votação") @RequestBody SessaoVotacaoDTO sessaoVotacacoDTO) {
+			@ApiParam(required = true, value = "Abertura da sessão de votação") @RequestBody SessaoVotacaoDTO sessaoVotacaoDTO) {
 		log.info("Efetuando cadastro da nova sessão de votação.");
-		return sessaoVotacaoService.cadastroNovaSessao(sessaoVotacacoDTO);
+		return sessaoVotacaoService.cadastroNovaSessao(sessaoVotacaoDTO);
 	}
 	
 	@SuppressWarnings("deprecation")

@@ -12,7 +12,7 @@ import lombok.Setter;
 public class VotoDTO {
 
 	private String cpf;
-	private SessaoVotacaoDTO sessaoDTO;
+	private Integer idSessao;
 	private String descVoto;
 	private String nomeAssociado;
 }

@@ -27,7 +27,7 @@ public class Pauta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id_pauta;
+	private Integer idPauta;
 	
 	@NotNull
 	private String assunto;

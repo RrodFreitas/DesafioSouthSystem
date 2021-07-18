@@ -19,6 +19,9 @@ public class VotoService {
 	private VotoRepository votoRepository;
 	
 	@Autowired
+	private JdbcPautaService jdbcPautaService;
+	
+	@Autowired
 	private ModelMapper modelMapper;
 
 	public boolean cadastrarVotosSessao(VotoDTO votoDTO) {
@@ -27,6 +30,7 @@ public class VotoService {
 		try {
 			if(voto != null) {
 				votoRepository.save(voto);
+				jdbcPautaService.atualizaVotosPauta(votoDTO.getIdSessao(), voto.getDescVoto());
 				return true;
 			} else
 				return false;	
