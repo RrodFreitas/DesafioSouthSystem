@@ -2,13 +2,10 @@ package br.com.southsystem.votacaoassembleia.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -30,11 +27,7 @@ public class Pauta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-		
-	@OneToOne(mappedBy = "pauta", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-	private SessaoVotacao sessaoVotacao;
+	private Integer id_pauta;
 	
 	@NotNull
 	private String assunto;

@@ -1,15 +1,17 @@
 package br.com.southsystem.votacaoassembleia.model;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,17 +30,19 @@ import lombok.Setter;
 public class SessaoVotacao {
 
 	@Id
-	@Column(name = "id_pauta")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id_sessao;
 	
 	@OneToOne
-    @MapsId
     @JoinColumn(name = "id_pauta")
 	private Pauta pauta;
 	
-	@OneToOne(mappedBy = "sessaoVotacao", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-	private Associado associado;
+	@ManyToMany
+	@JoinTable(
+			  name = "sessao_associado", 
+			  joinColumns = @JoinColumn(name = "id_sessao"), 
+			  inverseJoinColumns = @JoinColumn(name = "cpf"))
+	private List<Voto> voto;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataVotacaoPauta;

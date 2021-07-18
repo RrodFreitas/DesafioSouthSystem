@@ -4,7 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.southsystem.votacaoassembleia.dto.SessaoVotacaoDTO;
 import br.com.southsystem.votacaoassembleia.model.SessaoVotacao;
@@ -41,6 +43,10 @@ public class SessaoVotacaoService {
 	}
 	
 	public SessaoVotacaoDTO recuperaPautasAssembleia(Integer idPauta) {
-		return modelMapper.map(sessaoVotacaoRepository.findById(idPauta),SessaoVotacaoDTO.class);
+		SessaoVotacaoDTO sessaoVotacaoDTO = modelMapper.map(sessaoVotacaoRepository.findById(idPauta),SessaoVotacaoDTO.class);
+		if(sessaoVotacaoDTO == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi encontrada nenhuma sessão para votação");
+		}
+		return sessaoVotacaoDTO;
 	}
 }

@@ -2,8 +2,7 @@ package br.com.southsystem.votacaoassembleia.dto;
 
 import java.util.Date;
 
-import br.com.southsystem.votacaoassembleia.model.Associado;
-import br.com.southsystem.votacaoassembleia.model.Pauta;
+import br.com.southsystem.votacaoassembleia.model.Voto;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,8 +17,8 @@ import lombok.Setter;
 public class SessaoVotacaoDTO {
 
 	private Integer id;
-	private Pauta pauta;
-	private Associado associado;
+	private PautaDTO pautaDTO;
+	private Voto associado;
 	private Date dataVotacaoPauta;
 	private Integer periodoVotacaoPauta;
 }
