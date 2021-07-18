@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.southsystem.votacaoassembleia.controller.PautaController;
 import br.com.southsystem.votacaoassembleia.dto.PautaDTO;
 import br.com.southsystem.votacaoassembleia.model.Pauta;
 import br.com.southsystem.votacaoassembleia.repository.PautaRepository;
@@ -22,7 +21,8 @@ public class PautaService {
 	@Autowired
 	private PautaRepository pautaRepository;
 	
-	private ModelMapper modelMapper = new ModelMapper();
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	public List<PautaDTO> recuperaPautasAssembleia() {
 		List<PautaDTO> listaPautaDTO = new ArrayList<PautaDTO>();
