@@ -3,16 +3,15 @@ package br.com.southsystem.votacaoassembleia.model;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,29 +25,26 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Pauta {
+public class SessaoVotacao {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_pauta")
 	private Integer id;
-		
-	@OneToOne(mappedBy = "pauta", cascade = CascadeType.ALL)
+	
+	@OneToOne
+    @MapsId
+    @JoinColumn(name = "id_pauta")
+	private Pauta pauta;
+	
+	@OneToOne(mappedBy = "sessaoVotacao", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-	private SessaoVotacao sessaoVotacao;
+	private Associado associado;
 	
-	@NotNull
-	private String assunto;
-	
-	@NotNull
-	private String autor;
-	
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataCriacaoPauta;
+	private Date dataVotacaoPauta;
 	
-	@NotNull
-	private Integer totalVotosFavoraveis;
+	//Em minutos
+	@Column(name="periodoVotacao", nullable = false,  columnDefinition = "int default 1") 
+	private Integer periodoVotacaoPauta;
 	
-	@NotNull
-	private Integer totalVotosContra;
 }

@@ -48,11 +48,4 @@ public class PautaController {
 		log.info("Efetuando cadastro de nova pauta.");
 		return pautaService.cadastroNovaPauta(pautaDTO);
 	}
-	
-//	@ApiOperation(value = "Cancelar Transação de histórico de débito")
-//	@PostMapping(value = "/cancelTransactionDebitHistory", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//	public boolean cancelTransactionDebitHistory(
-//			@ApiParam(required = true, value = "Objeto com dados da transação") @RequestBody TransactionDebitHistoryDto object) {
-//		return cancelTransactionService.cancelTransaction(object);
-//	}
 }

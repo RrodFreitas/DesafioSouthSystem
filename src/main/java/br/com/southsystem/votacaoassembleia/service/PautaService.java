@@ -42,6 +42,7 @@ public class PautaService {
 			} else
 				return false;	
 		} catch (Exception e) {
+			log.error(e.getMessage());
 			return false;
 		}
 	}
