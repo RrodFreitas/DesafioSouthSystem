@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.southsystem.votacaoassembleia.dto.InsertPautaDTO;
 import br.com.southsystem.votacaoassembleia.dto.PautaDTO;
 import br.com.southsystem.votacaoassembleia.service.PautaService;
 import io.swagger.annotations.Api;
@@ -43,8 +44,8 @@ public class PautaController {
 	@ApiOperation(value = "Cadastrar nova pauta.")
 	@PostMapping (value = "/cadastrar", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public boolean cadastrarPauta(
-			@ApiParam(required = true, value = "Objeto pauta que será cadastrado") @RequestBody PautaDTO pautaDTO) {
+	public Integer cadastrarPauta(
+			@ApiParam(required = true, value = "Objeto pauta que será cadastrado") @RequestBody InsertPautaDTO pautaDTO) {
 		log.info("Efetuando cadastro de nova pauta.");
 		return pautaService.cadastroNovaPauta(pautaDTO);
 	}

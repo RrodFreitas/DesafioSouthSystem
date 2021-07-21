@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.southsystem.votacaoassembleia.dto.InsertPautaDTO;
 import br.com.southsystem.votacaoassembleia.dto.PautaDTO;
 import br.com.southsystem.votacaoassembleia.model.Pauta;
 import br.com.southsystem.votacaoassembleia.repository.PautaRepository;
@@ -41,18 +42,24 @@ public class PautaService {
 		return listaPautaDTO;
 	}
 
-	public boolean cadastroNovaPauta(PautaDTO pautaDTO) {
-		Pauta novaPauta = null;
-		novaPauta = modelMapper.map(pautaDTO, Pauta.class);
+	public Integer cadastroNovaPauta(InsertPautaDTO pautaDTO) {
+
 		try {
-			if(novaPauta != null) {
-				pautaRepository.save(novaPauta);
-				return true;
-			} else
-				return false;	
+			Pauta novaPauta = new Pauta();
+			
+			novaPauta.setAutor(pautaDTO.getAutor());
+			novaPauta.setAssunto(pautaDTO.getAssunto());
+			novaPauta.setDataCriacaoPauta(pautaDTO.getDataCriacaoPauta());
+			novaPauta.setTotalVotosContra(0);
+			novaPauta.setTotalVotosFavoraveis(0);
+			novaPauta.setTotalVotos(0);
+			
+			pautaRepository.save(novaPauta);
+			return novaPauta.getIdPauta();
+
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			return false;
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Erro ao inserir pauta!");
 		}
 	}
 
