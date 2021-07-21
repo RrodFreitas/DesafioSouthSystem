@@ -36,7 +36,7 @@ public class SwaggerConfig {
 				"Votação Assembleia API REST",
 				"API REST de Votacao de Pautas na Assembleia.",
 				"1.0",
-				"Terms of Service",
+				"",
 				new Contact("Rodrigo Freitas", "", "rodrigo.freitas.rrod@gmail.com"),
 				"",
 				"", new ArrayList<VendorExtension>());
