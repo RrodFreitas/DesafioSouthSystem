@@ -15,12 +15,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PautaDTO {
 
-	private Integer id;
+	private Integer idPauta;
 	private String assunto;
 	private String autor;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date dataCriacaoPauta;
 	private Integer totalVotosFavoraveis;
 	private Integer totalVotosContra;
-	
+	private Integer totalVotos;
+
 }

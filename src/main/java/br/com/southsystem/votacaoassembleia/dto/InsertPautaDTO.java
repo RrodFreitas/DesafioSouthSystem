@@ -5,23 +5,19 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-public class SessaoVotacaoDTO {
+@NoArgsConstructor
+public class InsertPautaDTO {
 
-	private Integer idPauta;
-	
+	private String assunto;
+	private String autor;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date dataVotacaoPauta;
-	
-	Integer periodoVotacaoPauta;
-	
+	private Date dataCriacaoPauta;
+
 }

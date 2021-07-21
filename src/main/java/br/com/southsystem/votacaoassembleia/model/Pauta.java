@@ -44,4 +44,8 @@ public class Pauta {
 	
 	@NotNull
 	private Integer totalVotosContra;
+	
+	@NotNull
+	private Integer totalVotos;
+	
 }
